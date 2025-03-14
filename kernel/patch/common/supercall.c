@@ -398,10 +398,7 @@ static void before(hook_fargs6_t *args, void *udata)
     long a4 = (long)syscall_argn(args, 5);
 
     args->skip_origin = 1;
-    logki("key is %s\n", key);
-    long supercall_result = supercall(is_key_auth, cmd, a1, a2, a3, a4);
-    logki("is_key_auth: %d, cmd: %lx, result: %ld\n", is_key_auth, cmd, supercall_result);
-    args->ret = supercall_result;
+    args->ret = supercall(is_key_auth, cmd, a1, a2, a3, a4);
 }
 
 int supercall_install()
